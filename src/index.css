@@ -65,21 +65,26 @@
   }
   
   .btn-primary {
-    @apply bg-primary text-white hover:bg-primary/90 px-6 py-3 rounded-md transition-colors duration-200;
+    @apply bg-primary text-white hover:bg-primary/90 px-6 py-3 rounded-md transition-all duration-300 shadow-md hover:shadow-lg hover:-translate-y-[2px];
   }
   
   .btn-secondary {
-    @apply bg-secondary text-primary hover:bg-secondary/80 px-6 py-3 rounded-md transition-colors duration-200;
+    @apply bg-secondary text-primary hover:bg-secondary/80 px-6 py-3 rounded-md transition-all duration-300 shadow-md hover:shadow-lg hover:-translate-y-[2px];
   }
   
   .section-title {
-    @apply text-3xl md:text-4xl lg:text-5xl font-serif font-medium mb-4;
+    @apply text-3xl md:text-4xl lg:text-5xl font-serif font-medium mb-4 relative inline-block;
+  }
+  
+  .section-title::after {
+    @apply content-[''] absolute left-0 -bottom-2 h-1 w-16 bg-husky-gold;
   }
   
   .section-subtitle {
     @apply text-lg text-muted-foreground mb-8 max-w-2xl;
   }
 
+  /* Enhanced animations */
   .fade-in {
     opacity: 0;
     animation: fadeIn 0.8s ease-out forwards;
@@ -90,7 +95,66 @@
     to { opacity: 1; transform: translateY(0); }
   }
 
+  .slide-in-left {
+    opacity: 0;
+    animation: slideInLeft 0.8s ease-out forwards;
+  }
+  
+  @keyframes slideInLeft {
+    from { opacity: 0; transform: translateX(-30px); }
+    to { opacity: 1; transform: translateX(0); }
+  }
+  
+  .slide-in-right {
+    opacity: 0;
+    animation: slideInRight 0.8s ease-out forwards;
+  }
+  
+  @keyframes slideInRight {
+    from { opacity: 0; transform: translateX(30px); }
+    to { opacity: 1; transform: translateX(0); }
+  }
+
+  /* Enhanced card effects */
   .card-hover {
-    @apply transition-all duration-300 hover:shadow-lg hover:-translate-y-1;
+    @apply transition-all duration-300 hover:shadow-lg hover:-translate-y-2;
+  }
+  
+  .card-gradient {
+    @apply relative overflow-hidden;
+  }
+  
+  .card-gradient::before {
+    @apply content-[''] absolute bottom-0 left-0 w-full h-1/2 bg-gradient-to-t from-husky-blue/10 to-transparent opacity-0 transition-opacity duration-300;
+  }
+  
+  .card-gradient:hover::before {
+    @apply opacity-100;
+  }
+  
+  /* Button enhancements */
+  .btn-effect {
+    @apply relative overflow-hidden transition-all duration-300 z-10;
+  }
+  
+  .btn-effect::before {
+    @apply content-[''] absolute top-0 left-0 w-full h-full bg-husky-gold opacity-0 -z-10 transform scale-x-0 origin-right transition-all duration-300;
+  }
+  
+  .btn-effect:hover::before {
+    @apply opacity-30 scale-x-100 origin-left;
+  }
+  
+  /* Link animations */
+  .link-underline {
+    @apply relative;
+  }
+  
+  .link-underline::after {
+    @apply content-[''] absolute left-0 bottom-0 w-full h-0.5 bg-husky-gold scale-x-0 origin-bottom-right transition-transform duration-300;
+  }
+  
+  .link-underline:hover::after {
+    @apply scale-x-100 origin-bottom-left;
   }
 }
