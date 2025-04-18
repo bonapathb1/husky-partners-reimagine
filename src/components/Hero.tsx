@@ -31,7 +31,7 @@ const Hero = () => {
             <Button className="bg-husky-gold text-husky-blue hover:bg-husky-gold/90 text-lg px-8 py-6">
               Book a Consultation
             </Button>
-            <Button variant="outline" className="border-white text-white hover:bg-white/10 text-lg px-8 py-6">
+            <Button variant="outline" className="border-white/50 text-white bg-white/5 text-lg px-8 py-6 hover:bg-white/10">
               Explore Our Services
             </Button>
           </div>
